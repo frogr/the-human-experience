@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import Header from './components/Header';
+import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+ReactDOM.render(
+  <div>
+    <Router>
+      <div>
+        <Route path="/*" component={Header} />
+        <Route path="/*" component={DebugRoutes} />
+        <Route exact path="/" component={Splash} />
+        <Route exact path="/polls" component={PollsDashboard} />
+        <Route exact path="/polls/:id" component={Poll} />
+        <Route exact path="/create/poll" component={MakePoll} />
+        <Route exact path="/account" component={Account} />
       </div>
-    );
-  }
-}
-
-export default App;
+    </Router>
+  </div>,
+  document.getElementById('root')
+);
+registerServiceWorker();
