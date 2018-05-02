@@ -1,0 +1,7 @@
+.debug {
+  width: 23%;
+  border: 1px solid black;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+}
